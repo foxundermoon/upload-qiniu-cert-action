@@ -13,12 +13,8 @@ jobs:
           sk: ${{ secrets.QINIU_SK }}
           domain: '*.fox.mn'
           update-domains: |
-            qn.fox.mn
-            .fox.mn | true
-            cloudnative.fox.mn | true
+            www.fox.mn | https
           debug: 'yes'
-          cert: |
-            ${{ secrets.DOMAIN_CERT }}
-          key: |
-            $${{ secrets.DOMAIN_KEY }}
+          cert: ${{ secrets.DOMAIN_CERT }}
+          key: $${{ secrets.DOMAIN_KEY }}
           

@@ -72,9 +72,12 @@ def upload():
         d = line.split('|')
         dn = d[0].strip()
         redirect = False
+        http2 = False
         if len(d) > 1:
             redirect = True
-        r, i = manager.put_httpsconf(dn, certId, redirect)
+        if len(d) > 2:
+            http2 = True
+        r, i = manager.put_httpsconf(dn, certId, redirect, http2)
         log(r)
         log(i)
         pass
