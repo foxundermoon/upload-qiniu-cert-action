@@ -1,12 +1,32 @@
-name: 'Container Action Template'
-description: 'Get started with Container actions'
-author: 'GitHub'
+name: 'Upload SSL cert for qiniu.com'
+description: 'upload qiniu ssl cert for CDN'
+author: 'fox.mn'
 inputs: 
-  myInput:
-    description: 'Input to use'
-    default: 'world'
+  ak:
+    description: the access key
+    required: true
+  sk:
+    description: the secret key
+    required: true
+  domain:
+    description: the domain name
+    required: true 
+  update-domains:
+    description: update cdn https config
+    required: true
+  cert-path:
+    description: the domain cert path
+    required: false
+  key-path:
+    description: the cert key path
+    required: false
+  cert:
+    description: the cert content
+    required: false
+  key:
+    description: the cert key content
+    required: false
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.myInput }}

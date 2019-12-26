@@ -1,0 +1,21 @@
+name: ci
+on: [push]
+
+jobs:
+  study:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: self test
+        uses: ./
+        with:
+          domain: '*.fox.mn'
+          update-domains: |
+            qn.fox.mn
+            fox.mn | true
+          debug: 'yes'
+          cert: ${{ secrets.DOMAIN_CERT }}
+          key: $${{ secrets.DOMAIN_KEY }}
+          
+
+          
