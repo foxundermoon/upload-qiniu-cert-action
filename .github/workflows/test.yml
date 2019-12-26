@@ -15,6 +15,6 @@ jobs:
           update-domains: |
             www.fox.mn | https
           debug: 'yes'
-          cert: ${{ secrets.DOMAIN_CERT }}
+          cert: ${{ secrets.FULL_CHAIN }}
           key: $${{ secrets.DOMAIN_KEY }}
           
