@@ -17,6 +17,8 @@ jobs:
             .fox.mn | true
             cloudnative.fox.mn | true
           debug: 'yes'
-          cert: ${{ secrets.DOMAIN_CERT }}
-          key: $${{ secrets.DOMAIN_KEY }}
+          cert: |
+            ${{ secrets.DOMAIN_CERT }}
+          key: |
+            $${{ secrets.DOMAIN_KEY }}
           
