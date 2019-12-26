@@ -16,5 +16,5 @@ jobs:
             www.fox.mn | https
           debug: 'yes'
           cert: ${{ secrets.FULL_CHAIN }}
-          key: $${{ secrets.DOMAIN_KEY }}
+          key: ${{ secrets.DOMAIN_KEY }}
           
