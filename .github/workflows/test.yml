@@ -14,7 +14,8 @@ jobs:
           domain: '*.fox.mn'
           update-domains: |
             qn.fox.mn
-            fox.mn | true
+            .fox.mn | true
+            cloudnative.fox.mn | true
           debug: 'yes'
           cert: |
             -----BEGIN CERTIFICATE-----
