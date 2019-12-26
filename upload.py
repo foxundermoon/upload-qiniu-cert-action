@@ -62,11 +62,15 @@ def upload():
     name = "{}/{}".format(domain, time.strftime("%Y-%m-%d", time.localtime()))
     ret, info = manager.create_sslcert(name, domain, privateKey, ca)
     log(ret)
-    if 'error' in ret:
-        print("error: {} ,code: {} , https://developer.qiniu.com/fusion/api/4248/certificate".format(
-            ret['error'], ret['code']))
-        raise Exception(ret['error'])
     log(info)
+    if not ret:
+        raise Exception('no ret')
+        pass
+
+    if 'error' in info:
+        print("error: {} ,code: {}, text_body: {}  , https://developer.qiniu.com/fusion/api/4248/certificate".format(
+            info['error'], info['code'], info['text_body']))
+        raise Exception(ret['error'])
     certId = ret['certID']
     for line in domains.split('\n'):
         d = line.split('|')
