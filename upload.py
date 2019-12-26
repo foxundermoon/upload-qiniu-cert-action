@@ -55,16 +55,13 @@ def upload():
 
     privateKey = getKey()
     ca = getCert()
-    log('ca bse64: {}'.format(base64.b64encode(
-        ca.encode(encoding="utf-8")).decode()))
-    log('privateKey base64: {}'.format(base64.b64encode(
-        privateKey.encode(encoding="utf-8")).decode()))
+    log('ca : {}'.format(ca))
+    log('privateKey : {}'.format(privateKey))
     name = "{}/{}".format(domain, time.strftime("%Y-%m-%d", time.localtime()))
     ret, info = manager.create_sslcert(name, domain, privateKey, ca)
     log(ret)
     log(info)
     if not ret:
-        print(info.get('text_body'))
         raise Exception('no ret')
 
     certId = ret['certID']
