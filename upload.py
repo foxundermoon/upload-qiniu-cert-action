@@ -16,7 +16,7 @@ def log(line):
 def readFile(path):
     work = os.getenv('GITHUB_WORKSPACE')
     fullPath = os.path.join(work, path)
-    return open(fullPath, 'r').read()
+    return open(fullPath, 'r').read().strip()
 
 
 def getCert():
