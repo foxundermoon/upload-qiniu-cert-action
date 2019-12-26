@@ -74,7 +74,7 @@ def upload():
             redirect = True
         if len(d) > 2:
             http2 = True
-        r, i = manager.put_httpsconf(dn, certId, redirect, http2)
+        r, i = manager.put_httpsconf(dn, certId, redirect)
         log(r)
         log(i)
         pass
