@@ -44,8 +44,11 @@ def getKey():
 def upload():
     ak = os.getenv('INPUT_AK')
     sk = os.getenv('INPUT_SK')
+    log('ak:{}   sk:{}'.format(ak, sk))
     domain = os.getenv('INPUT_DOMAIN')
-    domains = os.getenv('INPUT_UPDATE_DOMAINS')
+    log('domain: {}'.format(domain))
+    domains = os.getenv('INPUT_UPDATE-DOMAINS')
+    log('update-domins: {}' .format(domains))
     auth = qiniu.Auth(access_key=ak, secret_key=sk)
     manager = DomainManager(auth)
 
@@ -54,6 +57,10 @@ def upload():
     name = "{}/{}".format(domain, time.strftime("%Y-%m-%d", time.localtime()))
     ret, info = manager.create_sslcert(name, domain, privateKey, ca)
     log(ret)
+    if 'error' in ret:
+        print("error: {} ,code: {} , https://developer.qiniu.com/fusion/api/4248/certificate".format(
+            ret['error'], ret['code']))
+        raise Exception(ret['error'])
     log(info)
     certId = ret['certID']
     for line in domains.split('\n'):
@@ -66,7 +73,6 @@ def upload():
         log(r)
         log(i)
         pass
-
 
 
 upload()
