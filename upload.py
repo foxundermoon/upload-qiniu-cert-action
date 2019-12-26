@@ -4,6 +4,7 @@ import qiniu
 from qiniu import DomainManager
 import os
 import time
+import base64
 
 
 def log(line):
@@ -54,6 +55,8 @@ def upload():
 
     privateKey = getKey()
     ca = getCert()
+    log('ca bse64: {}'.format(base64.b64encode(ca)))
+    log('privateKey base64: {}'.format(base64.b64encode(privateKey)))
     name = "{}/{}".format(domain, time.strftime("%Y-%m-%d", time.localtime()))
     ret, info = manager.create_sslcert(name, domain, privateKey, ca)
     log(ret)
