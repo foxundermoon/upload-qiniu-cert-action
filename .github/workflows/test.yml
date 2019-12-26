@@ -9,13 +9,15 @@ jobs:
       - name: self test
         uses: ./
         with:
+          ak: ${{ secrets.QINIU_AK }}
+          sk: ${{ secrets.QINIU_SK }}
           domain: '*.fox.mn'
           update-domains: |
             qn.fox.mn
             fox.mn | true
           debug: 'yes'
           cert: ${{ secrets.DOMAIN_CERT }}
-          key: $${{ secrets.DOMAIN_KEY }}
+          key: ${{ secrets.DOMAIN_KEY }}
           
 
           
