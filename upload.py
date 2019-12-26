@@ -7,7 +7,7 @@ import time
 
 
 def log(line):
-    debug = os.getenv('INPU_DEBUG')
+    debug = os.getenv('INPUT_DEBUG')
     if debug:
         print(line)
 
