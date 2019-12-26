@@ -64,13 +64,9 @@ def upload():
     log(ret)
     log(info)
     if not ret:
+        print(info.get('text_body'))
         raise Exception('no ret')
-        pass
 
-    if 'error' in info:
-        print("error: {} ,code: {}, text_body: {}  , https://developer.qiniu.com/fusion/api/4248/certificate".format(
-            info['error'], info['code'], info['text_body']))
-        raise Exception(ret['error'])
     certId = ret['certID']
     for line in domains.split('\n'):
         d = line.split('|')
