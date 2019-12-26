@@ -66,3 +66,7 @@ def upload():
         log(r)
         log(i)
         pass
+
+
+
+upload()

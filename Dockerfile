@@ -4,10 +4,8 @@ ENV RELEASE_URL=https://github.com/qiniu/python-sdk/archive
 ENV MASTER=https://github.com/qiniu/python-sdk/archive/master.zip
 
 
-COPY LICENSE README.md  /
+COPY LICENSE README.md upload.py  /
 
-
-COPY upload.py /
 
 # pip install qiniu   failed
 RUN wget -qO-  -O qiniu.zip  "${MASTER}"  && \
