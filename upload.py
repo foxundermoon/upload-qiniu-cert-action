@@ -66,15 +66,14 @@ def upload():
 
     certId = ret['certID']
     for line in domains.split('\n'):
-        d = line.split('|')
-        dn = d[0].strip()
-        redirect = False
-        http2 = False
-        if len(d) > 1:
-            redirect = True
-        if len(d) > 2:
-            http2 = True
-        r, i = manager.put_httpsconf(dn, certId, redirect)
+        d = [e.strip().lower() for e in line.split('|')]
+        dn = d[0]
+        rest = d[1:]
+        redirect = 'https' in rest
+        http2 = 'http2' in rest
+        log('domain: {} certId: {} , https: {} , http2:{}'.format(
+            dn, certId, redirect, http2))
+        r, i = manager.put_httpsconf(dn, certId, redirect, http2)
         log(r)
         log(i)
         pass

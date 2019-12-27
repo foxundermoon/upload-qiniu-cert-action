@@ -1,7 +1,7 @@
 FROM python:3.5.6-alpine3.8
 
 ENV RELEASE_URL=https://github.com/qiniu/python-sdk/archive
-ENV MASTER=https://github.com/qiniu/python-sdk/archive/master.zip
+ENV MASTER=https://github.com/foxundermoon/qiniu-python-sdk/archive/feature/https-config.zip
 
 
 COPY LICENSE README.md upload.py  /

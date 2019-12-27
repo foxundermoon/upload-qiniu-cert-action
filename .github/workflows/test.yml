@@ -13,7 +13,7 @@ jobs:
           sk: ${{ secrets.QINIU_SK }}
           domain: '*.fox.mn'
           update-domains: |
-            www.fox.mn | https
+            .fox.mn | https | http2
           debug: 'yes'
           cert: ${{ secrets.FULL_CHAIN }}
           key: ${{ secrets.DOMAIN_KEY }}
