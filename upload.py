@@ -65,13 +65,13 @@ def upload():
         raise Exception('no ret')
 
     certId = ret['certID']
-    for line in domains.split('\n'):
+    for line in domains.strip().split('\n'):
         d = [e.strip().lower() for e in line.split('|')]
         dn = d[0]
         rest = d[1:]
         redirect = 'https' in rest
         http2 = 'http2' in rest
-        log('domain: {} certId: {} , https: {} , http2:{}'.format(
+        log('domain: {} certId: {} , https: {} , http2: {}'.format(
             dn, certId, redirect, http2))
         r, i = manager.put_httpsconf(dn, certId, redirect, http2)
         log(r)
