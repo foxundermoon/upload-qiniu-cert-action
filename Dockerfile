@@ -2,7 +2,8 @@ FROM python:3.5.6-alpine3.8
 
 ENV RELEASE_URL=https://github.com/qiniu/python-sdk/archive
 ENV MASTER=https://github.com/foxundermoon/qiniu-python-sdk/archive/feature/https-config.zip
-
+# ENV DIRNAME=python-sdk-master
+ENV DIRNAME=qiniu-python-sdk-feature-https-config
 
 COPY LICENSE README.md upload.py  /
 
@@ -11,9 +12,9 @@ COPY LICENSE README.md upload.py  /
 RUN wget -qO-  -O qiniu.zip  "${MASTER}"  && \
     unzip qiniu.zip  && \
     rm -f qiniu.zip && \
-    cd python-sdk-master && \
+    cd ${DIRNAME} && \
     python setup.py install && \
     cd .. && \
-    rm -rf python-sdk-master
+    rm -rf ${DIRNAME}
 
 ENTRYPOINT ["/upload.py"]
