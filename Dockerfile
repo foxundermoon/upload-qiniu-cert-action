@@ -1,4 +1,4 @@
-FROM python:3.5.6-alpine3.8
+FROM python:3.12-rc-alpine3.18
 
 ENV RELEASE_URL=https://github.com/qiniu/python-sdk/archive
 ENV MASTER=https://github.com/foxundermoon/qiniu-python-sdk/archive/feature/https-config.zip
