@@ -1,5 +1,18 @@
-# Container Action Template
+# upload cert to qiniu
 
-To get started, click the `Use this template` button on this repository [which will create a new repository based on this template](https://github.blog/2019-06-06-generate-new-repositories-with-repository-templates/).
+## usage
+```
+    - name: update qiniu ${{ matrix.domain }}
+      uses: foxundermoon/upload-qiniu-cert-action@master
+      with:
+        ak: ${{ secrets.QINIU_AK }}
+        sk: ${{ secrets.QINIU_SK }}
+        domain: ${{ matrix.domain }}
+        update-domains: |
+          .${{ matrix.domain }} | https | http2
+          ${{ matrix.domain }} | https | http2
+        debug: 'yes'
+        cert-path: '${{ matrix.domain }}_ecc/fullchain.cer'
+        key-path: '${{ matrix.domain }}_ecc/${{ matrix.domain }}.key'
 
-For info on how to build your first Container action, see the [toolkit docs folder](https://github.com/actions/toolkit/blob/master/docs/container-action.md).
+```
